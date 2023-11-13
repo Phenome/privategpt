@@ -5,9 +5,9 @@ then
   if ! command -v nvcc > /dev/null
   then
     if [[ -z "${WSL}" ]]; then
-      wget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-keyring_1.1-1_all.deb
-    else
       wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
+    else
+      wget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-keyring_1.1-1_all.deb
     fi
     dpkg -i cuda-keyring_1.1-1_all.deb
     apt update

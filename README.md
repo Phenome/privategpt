@@ -1,17 +1,21 @@
 # PrivateGPT Docker Image
 
 ## Introduction
+
 This repository maintains a Docker image designed to simplify the process of setting up and running PrivateGPT in a containerized environment. It handles all environment and build steps necessary for running PrivateGPT inside a container.
 
 ## Features
+
 Easy setup: Get PrivateGPT running with default configuration.
+
 - Use environment variables to override the used models
   | env | description | default |
   | --- | --- | --- |
-  | PORT | The container's listening port | 8001 |
   | LLM_REPO_ID | The Huggingface repo id | TheBloke/dolphin-2.2.1-mistral-7B-GGUF |
   | LLM_MODEL_FILE | The model file name inside the repo | dolphin-2.2.1-mistral-7b.Q5_K_S.gguf |
-  | EMBEDDING_MODEL | Haven't played around with changing this model, but you can try by setting this | BAAI/bge-small-en-v1.5 |
+  | EMBEDDING_MODEL | Haven't played around with changing this model, but you can try by setting this |
+  | PORT | The container's listening port | 8001 |BAAI/bge-small-en-v1.5 |
+  | WSL | Set to 1 if under WSL | -- |
 - Or mount a `settings.yaml` to directly customize it
 
 ## Running it
@@ -25,6 +29,7 @@ Initial run takes a while, as it needs to set up all python dependencies and dow
 ```
 
 ### GPU Acceleration
+
 If the continer has access to `nvidia-smi`, it'll install CUDA and use the GPU for inference.
 On newer docker installs, it should be as simple as
 

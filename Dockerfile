@@ -16,6 +16,6 @@ WORKDIR /workspace
 RUN git clone https://github.com/imartinez/privateGPT
 WORKDIR /workspace/privateGPT
 RUN apt clean -y
-COPY run_pgpt.sh /workspace/privateGPT/run_pgpt.sh
 COPY settings.yaml /workspace/privateGPT/settings.yaml
+COPY --chmod=0755 run_pgpt.sh /workspace/privateGPT/run_pgpt.sh
 CMD ./run_pgpt.sh

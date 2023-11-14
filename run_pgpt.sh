@@ -13,8 +13,8 @@ then
     apt update
     apt install -y cuda-toolkit-12-3
     echo 'export CUDA_HOME=/usr/local/cuda
-    PATH=${CUDA_HOME}/bin:${PATH}
-    LD_LIBRARY_PATH=${CUDA_HOME}/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc
+export PATH=${CUDA_HOME}/bin:${PATH}
+export LD_LIBRARY_PATH=${CUDA_HOME}/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc
     source ~/.bashrc
   fi
   CMAKE_ARGS='-DLLAMA_CUBLAS=on' poetry run pip install --force-reinstall --no-cache-dir llama-cpp-python

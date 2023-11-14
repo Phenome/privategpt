@@ -33,12 +33,13 @@ RUN echo $PATH
 RUN eval "$(pyenv init -)"
 RUN pyenv install 3.11
 RUN pyenv local 3.11
-RUN pip install poetry
+RUN pip install poetry pysqlite3-binary
 WORKDIR /workspace
 RUN git clone https://github.com/imartinez/privateGPT
 WORKDIR /workspace/privateGPT
 RUN apt clean -y
 RUN rm settings.yaml
 RUN cp settings-docker.yaml settings.yaml
+RUN sed -i "2aimport('pysqlite3')\nimport sys\nsys.modules['sqlite3'] = sys.modules.pop('pysqlite3')" private_gpt/main.py
 COPY --chmod=0755 run_pgpt.sh /workspace/privateGPT/run_pgpt.sh
 CMD ./run_pgpt.sh

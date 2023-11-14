@@ -38,6 +38,7 @@ WORKDIR /workspace
 RUN git clone https://github.com/imartinez/privateGPT
 WORKDIR /workspace/privateGPT
 RUN apt clean -y
-COPY settings.yaml /workspace/privateGPT/settings.yaml
+RUN rm settings.yaml
+RUN cp settings-docker.yaml settings.yaml
 COPY --chmod=0755 run_pgpt.sh /workspace/privateGPT/run_pgpt.sh
 CMD ./run_pgpt.sh

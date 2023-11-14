@@ -11,11 +11,13 @@ Easy setup: Get PrivateGPT running with default configuration.
 - Use environment variables to override the used models
   | env | description | default |
   | --- | --- | --- |
-  | LLM_REPO_ID | The Huggingface repo id | TheBloke/dolphin-2.2.1-mistral-7B-GGUF |
-  | LLM_MODEL_FILE | The model file name inside the repo | dolphin-2.2.1-mistral-7b.Q5_K_S.gguf |
-  | EMBEDDING_MODEL | Haven't played around with changing this model, but you can try by setting this |
+  | PGPT_HF_REPO_ID | The Huggingface repo id | TheBloke/dolphin-2.2.1-mistral-7B-GGUF |
+  | PGPT_HF_MODEL_FILE | The model file name inside the repo | dolphin-2.2.1-mistral-7b.Q5_K_S.gguf |
+  | PGPT_EMBEDDING_HF_MODEL_NAME | Haven't played around with changing this model, but you can try by setting this | -- |
+  | PGPT_SAGEMAKER_LLM_ENDPOINT_NAME | The Sagemaker LLM endpoint | -- |
+  | PGPT_SAGEMAKER_EMBEDDING_ENDPOINT_NAME | The Sagemaker embedding endpoint | -- |
+  | PGPT_MODE | LLM mode | mock |
   | PORT | The container's listening port | 8001 |BAAI/bge-small-en-v1.5 |
-  | WSL | Set to 1 if under WSL | -- |
 - Or mount a `settings.yaml` to directly customize it
 
 ## Running it

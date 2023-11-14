@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM nvidia/cuda:11.2.2-devel-ubuntu20.04
 
 VOLUME /workspace /root/.cache/pypoetry
 EXPOSE 8001

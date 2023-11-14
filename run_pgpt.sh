@@ -17,7 +17,7 @@ export PATH=${CUDA_HOME}/bin:${PATH}
 export LD_LIBRARY_PATH=${CUDA_HOME}/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc
     source ~/.bashrc
   fi
-  CMAKE_ARGS='-DLLAMA_CUBLAS=on' poetry run pip install --force-reinstall --no-cache-dir llama-cpp-python
+  CMAKE_ARGS='-DLLAMA_CUBLAS=on' poetry run pip install llama-cpp-python
 fi
 poetry install --with ui,local
 poetry run python scripts/setup

@@ -38,8 +38,7 @@ WORKDIR /workspace
 RUN git clone https://github.com/imartinez/privateGPT
 WORKDIR /workspace/privateGPT
 RUN apt clean -y
-RUN rm settings.yaml
-RUN cp settings-docker.yaml settings.yaml
-RUN sed -i "2aimport('pysqlite3')\nimport sys\nsys.modules['sqlite3'] = sys.modules.pop('pysqlite3')" private_gpt/main.py
+COPY settings.yaml /workspace/privateGPT/settings.yaml
+RUN sed -i "2aimport pysqlite3\nimport sys\nsys.modules['sqlite3'] = sys.modules.pop('pysqlite3')" private_gpt/main.py
 COPY --chmod=0755 run_pgpt.sh /workspace/privateGPT/run_pgpt.sh
 CMD ./run_pgpt.sh

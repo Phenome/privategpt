@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.2.2-devel-ubuntu20.04
+FROM ubuntu:22.04
 
 VOLUME /workspace /root/.cache/pypoetry
 EXPOSE 8001
@@ -24,7 +24,12 @@ RUN apt install -y \
     tk-dev \
     wget \
     xz-utils \
-    zlib1g-dev
+    zlib1g-dev \
+    g++ \
+    gdb \
+    ninja-build \
+    rsync \
+    zip
 RUN curl https://pyenv.run | bash
 ENV HOME /root
 ENV PYENV_ROOT $HOME/.pyenv
@@ -33,7 +38,7 @@ RUN echo $PATH
 RUN eval "$(pyenv init -)"
 RUN pyenv install 3.11
 RUN pyenv local 3.11
-RUN pip install poetry pysqlite3-binary
+RUN pip install poetry
 WORKDIR /workspace
 RUN git clone https://github.com/imartinez/privateGPT
 WORKDIR /workspace/privateGPT

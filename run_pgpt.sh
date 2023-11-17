@@ -15,7 +15,6 @@ then
     echo 'export CUDA_HOME=/usr/local/cuda
     PATH=${CUDA_HOME}/bin:${PATH}
     LD_LIBRARY_PATH=${CUDA_HOME}/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc
-    source ~/.bashrc
   fi
 fi
 poetry config installer.max-workers 10
@@ -23,6 +22,6 @@ poetry install --with ui,local
 poetry run python scripts/setup
 if command -v nvidia-smi > /dev/null
 then
-  CMAKE_ARGS='-DLLAMA_CUBLAS=on' poetry run pip install --force-reinstall llama-cpp-python
+  CUDA_HOME=/usr/local/cuda PATH=${CUDA_HOME}/bin:${PATH} CMAKE_ARGS='-DLLAMA_CUBLAS=on' poetry run pip install --force-reinstall llama-cpp-python
 fi
 PGPT_PROFILES=local make run
